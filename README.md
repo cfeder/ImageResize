@@ -16,11 +16,11 @@ Install ImageMagick into the project directory: http://www.imagemagick.org/scrip
 ## Usage
 npm start
 
-Server will listen on port 3000
+Server will listen on localhost port 3000
 
 Primary route:
 
-/resize/URL/X
+http://127.0.0.1:3000/resize/URL/X
 
 URL must be a URL which ends in .jpg, .jpeg, .png, or .bmp
 
