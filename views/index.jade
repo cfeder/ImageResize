@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p Usage:
+  p /resize/URL/X
+  p URL must be a URL which ends in .jpg, .jpeg, .png, or .bmp
+  p The URL must be URL encoded. You can use http://meyerweb.com/eric/tools/dencoder/ to URL encode your URL.
+  p X is the desired width dimension, measured in pixels, which must be between 1 and 10000, inclusive.
+  p The image located at the URL provided will be resized, maintaining aspect ratio, with the new width equal to the x value provided.
