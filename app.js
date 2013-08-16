@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -59,7 +58,8 @@ app.get('/resize/:u/:x', function(req, res, next){
 					var tempdestfd =info.fd;
 					request(u, function(error, response, body){//Go get the file at URL u
 						console.log('request is done writing ' + tempimg);
-						if(error || response.statusCode != 200) { //if the status code of the response was not 200, or request got an error, I know that I didn't get the image I expected
+						if(error || response.statusCode != 200) { //if the status code of the response was not 200,
+										//or request got an error, I know that I didn't get the image I expected
 							fs.closeSync(tempdestfd);//Clean up temp files, I won't be using them.
 							fs.unlinkSync(tempdest);
 							console.log('fs is done deleting ' + tempdest);
