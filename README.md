@@ -11,12 +11,14 @@ npm install imagemagick
 
 npm install request
 
+npm install temp
+
 Install ImageMagick into the project directory: http://www.imagemagick.org/script/index.php
 
 ## Usage
 npm start
 
-Server will listen on localhost port 3000
+Server will listen on port 3000
 
 Primary route:
 
