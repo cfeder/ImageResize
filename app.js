@@ -1,7 +1,6 @@
 /**
  * Module dependencies.
  */
-
 var express = require('express');
 var im = require('imagemagick');
 var request = require('request');
@@ -12,8 +11,6 @@ var stream = require('stream');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
-
-
 
 var app = express();
 
