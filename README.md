@@ -24,7 +24,7 @@ Primary route:
 
 http://127.0.0.1:3000/resize/URL/X
 
-URL must be a URL which ends in .jpg, .jpeg, .png, or .bmp
+URL must be a valid URL which is an image that ends in .jpg, .jpeg, .png, or .bmp
 
 The URL must be URL encoded. You can use http://meyerweb.com/eric/tools/dencoder/ to URL encode your URL.
 
