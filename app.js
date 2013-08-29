@@ -45,7 +45,7 @@ app.get('/resize/:u/:x', function(req, res, next){
 		} else{
 			http.get(options, function(response) {
 				if(response.statusCode != 200) { //if the status code of the response was not 200
-											//I know that I didn't get the image I expected
+									//I know that I didn't get the image I expected
 					res.send(404 , 'Sorry, the URL provided ' +
 							'did not respond with an \'OK\' status code');
 				} else{
