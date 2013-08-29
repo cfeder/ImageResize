@@ -1,18 +1,13 @@
 /**
  * Module dependencies.
  */
-var express = require('express');
-var im = require('imagemagick');
-var request = require('request');
-var url = require('url');
-var temp = require('temp');
-var fs = require('fs');
-var stream = require('stream');
-var routes = require('./routes');
-var http = require('http');
-var path = require('path');
-
-var app = express();
+var express = require('express')
+, im = require('imagemagick')
+, url = require('url')
+, routes = require('./routes')
+, http = require('http')
+, path = require('path')
+, app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -31,28 +26,28 @@ app.get('/resize/:u/:x', function(req, res, next){
 	var u = req.params.u;
 	var x = req.params.x;
 	var parsedurl = url.parse(u);
-	var ext = path.extname(parsedurl.pathname);
-
+	var ext = path.extname(parsedurl.pathname).toLowerCase();//Turns out file extensions can be uppercase
+	
 	
 	var options = {
-			  hostname: parsedurl.hostname,
-			  port: parsedurl.port,
-			  path: parsedurl.pathname,
+		hostname: parsedurl.hostname,
+		port: parsedurl.port,
+		path: parsedurl.pathname
 	};
 	
-	if(x > 4000 || x <= 0){//only accept dimensions from 1 to 4000 pixels
-		res.send(406, 'Sorry, the dimensions provided were outside the acceptable range.  '
-				+ 'Please provide dimensions from 1 to 4000 pixels.');
+	if(isNaN (x) || x > 4000 || x <= 0){//only accept dimensions from 1 to 4000 pixels, and only accept numbers
+		res.send(406, 'Sorry, the dimensions provided were outside the acceptable range.  ' +
+				'Please provide dimensions from 1 to 4000 pixels.');
 	} else{
 		if (ext != '.jpg' && ext != '.png' && ext != '.jpeg' && ext != '.bmp') {//only accept these file formats
-			res.send(415, 'Sorry, the URL provided is not an accepted image format. ' 
-					+ 'Please provide a URL with a .jpg, .jpeg, .bmp, or .png extention.');
+			res.send(415, 'Sorry, the URL provided is not an accepted image format. ' +
+					'Please provide a URL with a .jpg, .jpeg, .bmp, or .png extention.');
 		} else{
 			http.get(options, function(response) {
 				if(response.statusCode != 200) { //if the status code of the response was not 200
 											//I know that I didn't get the image I expected
-					res.send(415, 'Sorry, the URL provided '
-							+ 'did not respond with an \'OK\' status code');
+					res.send(404 , 'Sorry, the URL provided ' +
+							'did not respond with an \'OK\' status code');
 				} else{
 					var data = '';
 					response.setEncoding('binary');
@@ -74,8 +69,8 @@ app.get('/resize/:u/:x', function(req, res, next){
 					});
 				}
 			}).on('error', function(e) { //this covers the case of a URL where the DNS entry cannot be found
-				res.send(415, 'Sorry, there was an error with the HTTP get, '
-						+ 'error message: ' + e.message);
+				res.send(404 , 'Sorry, there was an error with the HTTP get, ' +
+						'error message: ' + e.message);
 			});
 		}
 	}
