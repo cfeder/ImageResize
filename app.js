@@ -28,7 +28,6 @@ app.get('/resize/:u/:x', function(req, res, next){
 	var parsedurl = url.parse(u);
 	var ext = path.extname(parsedurl.pathname).toLowerCase();//Turns out file extensions can be uppercase
 	
-	
 	var options = {
 		hostname: parsedurl.hostname,
 		port: parsedurl.port,
