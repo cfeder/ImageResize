@@ -4,3 +4,9 @@ node_js:
   - "0.10"
   - "0.8"
   - "0.6"
+install: 
+  - npm install nodeunit -g
+  - npm install express
+  - npm install jade
+  - npm install imagemagick
+script: nodeunit ./Tests/tests.js
