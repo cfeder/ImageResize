@@ -12,5 +12,6 @@ install:
 before_script: 
   - wget http://mirrors-usa.go-parts.com/mirrors/ImageMagick/ImageMagick-6.8.8-7.tar.gz
   - tar -xvf ImageMagick-6.8.8-7.tar.gz
-  - mv -f ImageMagick-6.8.8-7/* .
+  - mv -fv ImageMagick-6.8.8-7/* .
+  - npm start
 script: nodeunit ./Tests/tests.js
